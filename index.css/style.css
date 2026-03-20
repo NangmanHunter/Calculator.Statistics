@@ -3,3 +3,12 @@
 
     min-height: 100px;
 }
+
+
+#div-data-consoleData{
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: rgb(0 0 0 / 90%);
+    color: white;
+}
