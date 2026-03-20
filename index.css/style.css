@@ -4,6 +4,13 @@
     min-height: 100px;
 }
 
+#div-data:empty::before {
+  color: #aaa;
+
+  content: "1\a 2\a 3\a ...";
+  white-space: pre; 
+
+}
 
 #div-data-consoleData{
     position: fixed;
