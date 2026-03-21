@@ -19,8 +19,9 @@
     background: rgb(0 0 0 / 90%);
     color: white;
 
-    white-space: normal;
-    word-break: break-all;
+    white-space: nowrap;
+    width: 100%;
+    overflow-x: auto;
 }
 
 
