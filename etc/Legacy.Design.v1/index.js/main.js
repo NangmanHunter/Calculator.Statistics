@@ -19,26 +19,6 @@ function toDataArray(text){
 }
 
 
-
-
-function getSampleSize(dataArray){return dataArray.length}
-function getTotalSum(dataArray){
-    const totalSum = dataArray.reduce((acc, cur) => {
-        return acc + Number(cur);
-    }, 0);
-    return totalSum
-}
-function getSquaresSum(dataArray,average){
-
-    const squaresSum = dataArray.reduce((acc, cur) => {
-        return acc + (Number(cur)-Number(average))**2;
-    }, 0);
-    return squaresSum;
-}
-
-
-
-
 function getAverage(dataArray){
 
     // 1. ⚠️ 방어 코드: 데이터가 없으면 0을 반환 (나누기 0 에러 방지)
@@ -56,10 +36,10 @@ function getAverage(dataArray){
 
 function getVariance(dataArray, average){
 
-    const squaresSum = dataArray.reduce((acc, cur) => {
+    const varianceSum = dataArray.reduce((acc, cur) => {
         return acc + (Number(cur)-Number(average))**2;
     }, 0);
-    return squaresSum/dataArray.length;
+    return varianceSum/dataArray.length;
 
 }
 function getStandardDeviation(variance){
@@ -72,10 +52,10 @@ function getSampleVariance(dataArray, average){
 
     if (dataArray.length === 1) return `❌`;
 
-    const squaresSum = dataArray.reduce((acc, cur) => {
+    const varianceSum = dataArray.reduce((acc, cur) => {
         return acc + (Number(cur)-Number(average))**2;
     }, 0);
-    return squaresSum/(dataArray.length-1);
+    return varianceSum/(dataArray.length-1);
 }
 function getSampleStandardDeviation(dataArray, sampleVariance){
     if (dataArray.length === 1) return `❌`;
@@ -93,50 +73,20 @@ data.addEventListener("input", (e)=>{
     const text=e.target.innerText
     const dataArray=toDataArray(text);
 
-    const sampleSize=getSampleSize(dataArray);
-    const totalSum=getTotalSum(dataArray);
     const average=getAverage(dataArray)
-
-    const squaresSum=getSquaresSum(dataArray,average);
     const variance=getVariance(dataArray, average)
-
     const standardDeviation=getStandardDeviation(variance)
     const sampleVariance=getSampleVariance(dataArray, average)
     const sampleStandardDeviation=getSampleStandardDeviation(dataArray, sampleVariance)
     const standardError=getStandardError(dataArray, sampleStandardDeviation)
 
-
-
-
     consoleData.innerHTML=`
     <table>
         <tbody>
-            <tr><td>
-                <details>
-                    <summary>Average</summary>
-                    <hr>
-
-                    <ul>
-                        <li>SampleSize: ${sampleSize}</li>
-                        <li>TotalSum: ${totalSum}</li>
-                    </ul>
-                </details>       
-            
-            </td><td>: ${average}</td>
-            </tr>
+            <tr><td>Average</td><td>: ${average}</td></tr>
             
             
-            <tr><td>
-                <details>
-                    <summary>Variance</summary>
-                    <hr>
-
-                    <ul>
-                        <li>SquaresSum: ${squaresSum}</li>
-                    </ul>
-                </details>       
-            </td><td>: ${variance}</td></tr>
-
+            <tr><td>Variance</td><td>: ${variance}</td></tr>
             <tr><td>StandardDeviation</td><td>: ${standardDeviation}</td></tr>
             <tr><td>SampleVariance</td><td>: ${sampleVariance}</td></tr>
             <tr><td>SampleStandardDeviation</td><td>: ${sampleStandardDeviation}</td></tr>

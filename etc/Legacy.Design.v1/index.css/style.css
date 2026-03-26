@@ -1,3 +1,7 @@
+/* 
+consoleData
+- Top.Fixed
+*/
 #div-data{
     border: 3px solid black;
 
@@ -13,11 +17,9 @@
 }
 
 #div-data-consoleData{
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 50%;
-    font-size: 12px;
-
+    right: 0;
     background: rgb(0 0 0 / 90%);
     color: rgb(255 255 255 / 70%);
 
@@ -27,7 +29,4 @@
 }
 
 
-#div-data-consoleData>table tr td:nth-child(2){
-    vertical-align: top;
-}
 
